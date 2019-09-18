@@ -9,3 +9,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.numbers {
+  height: 40px;
+  line-height: 40px;
+}

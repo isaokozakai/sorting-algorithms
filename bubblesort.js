@@ -1,11 +1,12 @@
 // fill array with random numbers
-let rndArray = fillList(10)
+let rndArray = fillList(10);
 
 // show the arrays we are dealing with
-document.getElementById("left").textContent = rndArray;
+document.getElementById("input").textContent = rndArray;
 
-// show the end result
-document.getElementById("right").textContent = bubbleSort(rndArray);
+// show the end result;
+document.getElementById("bubble").textContent = bubbleSort(rndArray);
+document.getElementById("selection").textContent = selectionSort(rndArray);
 
 function fillList(itemCount) {
     let anArray = [];
@@ -16,18 +17,13 @@ function fillList(itemCount) {
 }
 
 function bubbleSort(theArray) {
-
-
     // we will need a tmpArray to store values into, we simply copy theArray to tmpArray
     // because otherwise we cannot change the contents of theArray (without risking errors)
     let tmpArray = theArray;
 
-
     // lets begin our OUTSIDE loop, this will keep us looping enough times
     // to sort our numbers
-
     for (let loopCount = 0; loopCount < tmpArray.length; loopCount++) {
-
         // now lets loop from left to right in the array
         for (let n = 0; n < tmpArray.length - 1; n++) {
             console.log(tmpArray)
@@ -45,13 +41,31 @@ function bubbleSort(theArray) {
                 tmpArray[n + 1] = a;
                 tmpArray[n] = b;
             }
-
         }
-
     }
     return tmpArray;
 }
-    // begin a loop from left to right
-            // while in the loop
-                // take I+1 - check if its < i
-                    // if less, then put i+1 into i, and i into i+1
+
+// begin a loop from left to right
+// while in the loop
+// take I+1 - check if its < i
+// if less, then put i+1 into i, and i into i+1
+
+function selectionSort(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        let min = i;
+
+        for (var j = i + 1; j < arr.length; j++) {
+            if (arr[min] > arr[j]) {
+                min = j;
+            }
+        }
+
+        if (i !== min) {
+            [arr[i], arr[min]] = [arr[min], arr[i]];
+        }
+    }
+    return arr;
+}
+
+console.log(selectionSort([6, 3, 8, 9, 2, 0, 3, 1, 4]))
