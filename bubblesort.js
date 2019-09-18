@@ -1,12 +1,22 @@
 // fill array with random numbers
-let rndArray = fillList(10);
+let rndArray;
 
 // show the arrays we are dealing with
-document.getElementById("input").textContent = rndArray;
+document.getElementById("generateNumbers")
+    .addEventListener("click", (e) => {
+        rndArray = fillList(10);
+        document.getElementById("randomNumbers").textContent = rndArray;
+    });
 
 // show the end result;
-document.getElementById("bubble").textContent = bubbleSort(rndArray);
-document.getElementById("selection").textContent = selectionSort(rndArray);
+document.getElementById("bubblesort")
+.addEventListener("click", (e) => {
+    document.getElementById("result").textContent = 'Bubble Sort: ' + bubbleSort(rndArray);
+});
+document.getElementById("selectionsort")
+.addEventListener("click", (e) => {
+    document.getElementById("result").textContent = 'Selection Sort: ' + selectionSort(rndArray);
+});
 
 function fillList(itemCount) {
     let anArray = [];
@@ -14,7 +24,7 @@ function fillList(itemCount) {
         anArray.push(Math.floor((Math.random() * 10) + 1));
     }
     return anArray;
-}
+};
 
 function bubbleSort(theArray) {
     // we will need a tmpArray to store values into, we simply copy theArray to tmpArray
@@ -44,7 +54,7 @@ function bubbleSort(theArray) {
         }
     }
     return tmpArray;
-}
+};
 
 // begin a loop from left to right
 // while in the loop
@@ -66,6 +76,6 @@ function selectionSort(arr) {
         }
     }
     return arr;
-}
+};
 
-console.log(selectionSort([6, 3, 8, 9, 2, 0, 3, 1, 4]))
+console.log(selectionSort([6, 3, 8, 9, 2, 0, 3, 1, 4]));
